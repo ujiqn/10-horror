@@ -3,6 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <title>10</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font: 30px "Shippori Mincho";
+    }
+
+    p {
+      position: absolute;
+      top: -9999px;
+    }
+
+    input {
+      display: block;
+      font-size: 40px;
+    }
+
+    img {
+      display: block;
+      margin-top: 8px;
+    }
+  </style>
 </head>
-<body>10</body>
+<body>
+  <p>一部屋だけ異様に安い</p>
+  <input type="text" value="一部屋だけ異様に安い" maxlength="10" />
+  <img width="800" height="450" />
+  <script>
+    setInterval(() => {
+      const sub = document.createElement('canvas');
+      const subCtx = sub.getContext('2d');
+      const txt = document.querySelector('input').value;
+
+      sub.width = 1600;
+      sub.height = 800;
+
+      subCtx.fillStyle = '#eee';
+      subCtx.fillRect(0, 0, sub.width, sub.height);
+      subCtx.fillStyle = '#000';
+      subCtx.textAlign = 'center';
+      subCtx.textBaseline = 'middle';
+      subCtx.font = '80px "Shippori Mincho"';
+      subCtx.fillText([...txt].join('  '), sub.width / 2, sub.height / 2);
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = 800;
+      canvas.height = 450;
+      ctx.drawImage(sub, 0, 0, canvas.width, canvas.height);
+
+      document.querySelector('img').setAttribute('src', canvas.toDataURL('image/png'));
+    }, 100);
+  </script>
+</body>
 </html>
