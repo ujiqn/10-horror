@@ -66,10 +66,6 @@ export default function IndexPage() {
       subCanvas.width = WIDTH * 2;
       subCanvas.height = HEIGHT * 2 * SCALE;
 
-      // ctx.save();
-      //   ctx.drawImage(img, 0, 0);
-      // ctx.restore();
-
       subCtx.save();
         subCtx.fillStyle = '#000';
         subCtx.textAlign = 'center';
@@ -84,7 +80,8 @@ export default function IndexPage() {
       ctx.save();
         ctx.fillStyle = '#eee';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(subCanvas, 0, canvas.height * ((1 - SCALE) / 4), canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(subCanvas, 0, canvas.height * ((1 - SCALE) / 4) - 16, canvas.width, canvas.height);
       ctx.restore();
 
       setHref(canvas.toDataURL('image/png'));
@@ -111,7 +108,7 @@ export default function IndexPage() {
         id="btn-download"
         className={ `${styles.btn} ${styles['btn-save']}` }
         href={ href }
-        download="54"
+        download="10-horror"
       >画像を保存</a>
     </div>
   );
