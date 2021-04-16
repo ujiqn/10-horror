@@ -22,6 +22,7 @@ export default function IndexPage() {
   const HEIGHT = 450;
   const TXT_LENGTH = 10;
   const TXT_SIZE = 80;
+  const SCALE = .9;
 
   useEffect(() => {
     if (isInit) {
@@ -63,16 +64,12 @@ export default function IndexPage() {
 
     function render():void {
       subCanvas.width = WIDTH * 2;
-      subCanvas.height = HEIGHT * 2;
+      subCanvas.height = HEIGHT * 2 * SCALE;
 
       // ctx.save();
       //   ctx.drawImage(img, 0, 0);
       // ctx.restore();
 
-      subCtx.save();
-        subCtx.fillStyle = '#eee';
-        subCtx.fillRect(0, 0, subCanvas.width, subCanvas.height);
-      subCtx.restore();
       subCtx.save();
         subCtx.fillStyle = '#000';
         subCtx.textAlign = 'center';
@@ -83,7 +80,12 @@ export default function IndexPage() {
 
       canvas.width = WIDTH;
       canvas.height = HEIGHT;
-      ctx.drawImage(subCanvas, 0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+        ctx.fillStyle = '#eee';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(subCanvas, 0, canvas.height * ((1 - SCALE) / 4), canvas.width, canvas.height);
+      ctx.restore();
 
       setHref(canvas.toDataURL('image/png'));
     }
