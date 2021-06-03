@@ -19,8 +19,8 @@ export default class Layout extends Document {
           <meta name="generator" content="Next.js" />
           <meta property="og:title" content="10文字ホラージェネレーター #10文字ホラー" />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://ujiqn.github.io/10-horror/" />
-          <meta property="og:image" content="https://ujiqn.github.io/10-horror/ogp.png" />
+          <meta property="og:url" content="https://10.ujiqn.com" />
+          <meta property="og:image" content="https://10.ujiqn.com/ogp.png" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta property="og:site_name" content="10文字ホラージェネレーター #10文字ホラー" />
@@ -28,9 +28,9 @@ export default class Layout extends Document {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="10文字ホラージェネレーター #10文字ホラー" />
           <meta name="twitter:description" content="10文字でホラーをつくりましょう。" />
-          <meta name="twitter:image:src" content="https://ujiqn.github.io/10-horror/ogp.png" />
+          <meta name="twitter:image:src" content="https://10.ujiqn.com/ogp.png" />
           <meta name="format-detection" content="telephone=no" />
-          <link rel="shortcut icon" href="https://ujiqn.github.io/10-horror/favicon.ico" />
+          <link rel="shortcut icon" href="https://10.ujiqn.com/favicon.ico" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet" />
