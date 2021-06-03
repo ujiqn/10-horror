@@ -24,10 +24,10 @@ export default class Layout extends Document {
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta property="og:site_name" content="10文字ホラージェネレーター #10文字ホラー" />
-          <meta property="og:description" content="10文字でホラーをつくりましょう。" />
+          <meta property="og:description" content="10文字で怖がらせてください。" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="10文字ホラージェネレーター #10文字ホラー" />
-          <meta name="twitter:description" content="10文字でホラーをつくりましょう。" />
+          <meta name="twitter:description" content="10文字で怖がらせてください。" />
           <meta name="twitter:image:src" content="https://10.ujiqn.com/ogp.png" />
           <meta name="format-detection" content="telephone=no" />
           <link rel="shortcut icon" href="https://10.ujiqn.com/favicon.ico" />
@@ -35,7 +35,16 @@ export default class Layout extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet" />
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121940062-1"></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ESZ66T7E6"></script>
+          <script
+            dangerouslySetInnerHTML={{__html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-6ESZ66T7E6');
+            `}}
+          />
+
         </Head>
         <body>
           <Main />

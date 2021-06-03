@@ -37,6 +37,13 @@ export default function IndexPage() {
     };
     imgElm.src = './frame.png';
 
+    ([].slice.call(document.querySelectorAll('[data-ga]'))).forEach(function(elm: HTMLElement) {
+      elm.addEventListener('click', () => {
+        handleClickGa(elm);
+      });
+    });
+
+
     const txt = txtRef.current;
 
     setInterval(() => {
