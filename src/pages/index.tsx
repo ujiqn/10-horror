@@ -43,7 +43,6 @@ export default function IndexPage() {
       });
     });
 
-
     const txt = txtRef.current;
 
     setInterval(() => {
@@ -105,12 +104,27 @@ export default function IndexPage() {
         contentEditable={ true }
         suppressContentEditableWarning={ true }
       >{ novel }</div>
-      <a
-        id="btn-download"
-        className={ `${styles.btn} ${styles['btn-save']}` }
-        href={ href }
-        download="10-horror"
-      >画像を保存</a>
+      { (() => {
+        if (process.browser && /iphone|ipad|ipod|android/.test(navigator.userAgent.toLowerCase())) {
+          return (
+            <a
+              id="btn-download"
+              className={ `${styles.btn} ${styles['btn-save']}` }
+              href={ href }
+              target="_blank"
+            >画像を保存</a>
+          );
+        } else {
+          return (
+            <a
+              id="btn-download"
+              className={ `${styles.btn} ${styles['btn-save']}` }
+              href={ href }
+              download="10-horror"
+            >画像を保存</a>
+          );
+        }
+      })() }
     </div>
   );
 }
