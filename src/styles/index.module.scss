@@ -2,10 +2,23 @@
   position: relative;
   transition: opacity .2s .4s ease-in-out;
 
+  p {
+    position: relative;
+    width: 100%;
+
+    img {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 0; right: 0;
+      width: 100%; height: auto;
+    }
+  }
+
   canvas {
     margin: auto;
     display: block;
     width: 100%;
+    visibility: hidden;
   }
 }
 

@@ -96,8 +96,11 @@ export default function IndexPage() {
     <div
       className={ styles.index }
       style={{ opacity: isInit ? 1 : 0 }}
-     >
-      <canvas ref={ canvasRef } />
+    >
+      <p>
+        <canvas ref={ canvasRef } />
+        <img src={ href } />
+      </p>
       <div
         ref={ txtRef }
         className={ styles.txt } 
@@ -108,7 +111,7 @@ export default function IndexPage() {
         id="btn-download"
         className={ `${styles.btn} ${styles['btn-save']}` }
         href={ href }
-        download="10-horror"
+        target="_blank"
       >画像を保存</a>
     </div>
   );
