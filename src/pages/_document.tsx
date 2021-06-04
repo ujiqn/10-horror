@@ -11,7 +11,7 @@ export default class Layout extends Document {
     return (
       <Html>
         <Head>
-          <title>54字の物語ジェネレーター #54字の文学賞</title>
+          <title>10文字ホラージェネレーター #10文字ホラー</title>
           <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no" />
           <meta name="description" content="10文字ホラージェネレーター #10文字ホラー" />
           <meta name="keywords" content="#10文字ホラー,10文字ホラー,氏田雄介" />
