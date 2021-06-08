@@ -14,8 +14,7 @@ export default function IndexPage() {
   const [ text, setText ] = useState([]);
   const [ href, setHref ] = useState('');
   const [ novel, setNovel ] = useState('一部屋だけ異様に安い');
-  const [ news, setNews ] = useState([]);
-  const [ books, setBooks ] = useState([]);
+  const [ info, setInfo ] = useState([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const txtRef = useRef<HTMLDivElement>(null);
   const WIDTH = 800;
@@ -28,6 +27,22 @@ export default function IndexPage() {
     if (isInit) {
       return;
     }
+
+    (async () => {
+      const headers = { 'X-API-KEY': '973afc71-353d-4807-8a9e-b518b44d77dc' };
+
+      await Promise.all([
+        axios.get('https://10moji.microcms.io/api/v1/novel', {
+          headers
+        }),
+        axios.get('https://10moji.microcms.io/api/v1/info', {
+          headers
+        })
+      ]).then((res) => {
+        setNovel(res[0].data.novel);
+        setInfo(res[1].data.contents.reverse());
+      });
+    })();
 
     const imgElm = new Image();
 
@@ -92,6 +107,24 @@ export default function IndexPage() {
     window.gtag('event', String(elm.dataset.ga));
   }
 
+  function getInfoItem(item, i) {
+    return (
+      <div
+        key={ i }
+        className={ styles.box }
+      >
+        <h1>{ item.title }</h1>
+        <div dangerouslySetInnerHTML={{__html: item.html}} />
+      </div>
+    );
+  }
+
+  function getInfo() {
+    return info.map((item, i) => {
+      return getInfoItem(item, i);
+    });
+  }
+
   return (
     <div
       className={ styles.index }
@@ -113,6 +146,7 @@ export default function IndexPage() {
         href={ href }
         target="_blank"
       >画像を保存</a>
+      <div className={ styles.info }>{ getInfo() }</div>
     </div>
   );
 }
