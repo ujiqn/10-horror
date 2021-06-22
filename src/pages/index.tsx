@@ -144,7 +144,7 @@ export default function IndexPage() {
         id="btn-download"
         className={ `${styles.btn} ${styles['btn-save']}` }
         href={ href }
-        target="_blank"
+        download="10"
       >画像を保存</a>
       <div className={ styles.info }>{ getInfo() }</div>
     </div>
