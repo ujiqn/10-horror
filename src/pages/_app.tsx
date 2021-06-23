@@ -6,6 +6,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <script
+          dangerouslySetInnerHTML={{__html: `
+            if (location.hostname !== '10m.ujiqn.com') {
+              location.replace('https://10m.ujiqn.com');
+            }
+          `}}
+        />
         <title>10文字ホラージェネレーター #10文字ホラー</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no" />
         <meta name="description" content="10文字ホラージェネレーター #10文字ホラー" />
