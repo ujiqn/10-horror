@@ -32,6 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:description" content="10文字で怖がらせてください。" />
         <meta name="twitter:image:src" content="https://10.ujiqn.com/ogp.png" />
         <meta name="format-detection" content="telephone=no" />
+        <link rel="canonical" href="https://10.ujiqn.com" />
         <link rel="shortcut icon" href="https://10.ujiqn.com/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet" />
