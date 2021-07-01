@@ -8,8 +8,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <script
           dangerouslySetInnerHTML={{__html: `
-            if (location.hostname !== '10m.ujiqn.com') {
-              location.replace('https://10m.ujiqn.com');
+            if (location.hostname !== '10.ujiqn.com') {
+              location.replace('https://10.ujiqn.com');
             }
           `}}
         />
