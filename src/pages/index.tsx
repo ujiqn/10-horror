@@ -157,7 +157,7 @@ export default function IndexPage() {
     const file = canvasToPngFile(canvasRef.current);
 
     navigator.share({
-      text: `${ text } #10文字ホラー大賞`,
+      text: `${ text.join('') } #10文字ホラー大賞`,
       url: `${ location.protocol }//${ location.hostname }${ location.pathname }`,
       files: file ? [ file ] : undefined
     }).then(() => {
