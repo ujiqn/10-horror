@@ -6,6 +6,12 @@ declare global {
   interface Window {
     gtag: (name: string, value: string) => void;
   }
+  interface ShareData {
+    files?: File[];
+    text?: string;
+    title?: string;
+    url?: string;
+  }
 }
 
 export default function IndexPage() {
@@ -125,6 +131,42 @@ export default function IndexPage() {
     });
   }
 
+  function canvasToPngFile(canvas) {
+    const type = 'image/png';
+    const dataUrl = canvas.toDataURL(type);
+    const decodedData = window.atob(dataUrl.replace(/^.*,/, ''));
+    const buffers = new Uint8Array(decodedData.length);
+
+    for (let i = 0; i < decodedData.length; ++i) {
+      buffers[i] = decodedData.charCodeAt(i);
+    }
+
+    try {
+      const blob = new Blob([buffers.buffer], {
+        type
+      });
+
+      return new File([ blob ], '10.png', { type });
+
+    } catch {
+      return null;
+    }
+  }
+
+  function handleClickBtnShare() {
+    const file = canvasToPngFile(canvasRef.current);
+
+    navigator.share({
+      text: `${ text } #10文字ホラー大賞`,
+      url: `${ location.protocol }//${ location.hostname }${ location.pathname }`,
+      files: file ? [ file ] : undefined
+    }).then(() => {
+      window.gtag('event', 'share');
+    }).catch((err) => {
+      console.error(err);
+    });
+  }
+
   return (
     <div
       className={ styles.index }
@@ -142,10 +184,23 @@ export default function IndexPage() {
       >{ novel }</div>
       <a
         id="btn-download"
-        className={ `${styles.btn} ${styles['btn-save']}` }
+        className={ `${ styles.btn }` }
         href={ href }
         download="10"
       >画像を保存</a>
+      {(() => {
+        if (process.browser && !window.navigator.share) {
+          return;
+        }
+
+        return (
+          <a
+            onClick={ handleClickBtnShare }
+            id="btn-share"
+            className={ `${ styles.btn }` }
+          >画像をシェア</a>
+        );
+      })()}
       <div className={ styles.info }>{ getInfo() }</div>
     </div>
   );
