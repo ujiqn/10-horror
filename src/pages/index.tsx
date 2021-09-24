@@ -158,7 +158,7 @@ export default function IndexPage() {
 
     navigator.share({
       text: `${ text.join('') } #10文字ホラー大賞`,
-      url: `${ location.protocol }//${ location.hostname }${ location.pathname }`,
+      // url: `${ location.protocol }//${ location.hostname }${ location.pathname }`,
       files: file ? [ file ] : undefined
     }).then(() => {
       window.gtag('event', 'share');
