@@ -21,6 +21,7 @@ export default function IndexPage() {
   const [ href, setHref ] = useState('');
   const [ novel, setNovel ] = useState('一部屋だけ異様に安い');
   const [ info, setInfo ] = useState([]);
+  const [ hashtags, setHashtags ] = useState('#10文字ホラー');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const txtRef = useRef<HTMLDivElement>(null);
   const WIDTH = 800;
@@ -43,10 +44,14 @@ export default function IndexPage() {
         }),
         axios.get('https://10moji.microcms.io/api/v1/info', {
           headers
+        }),
+        axios.get('https://10moji.microcms.io/api/v1/hashtags', {
+          headers
         })
       ]).then((res) => {
         setNovel(res[0].data.novel);
         setInfo(res[1].data.contents.reverse());
+        setHashtags(res[2].data.hashtags);
       });
     })();
 
@@ -157,7 +162,7 @@ export default function IndexPage() {
     const file = canvasToPngFile(canvasRef.current);
 
     navigator.share({
-      text: `${ text.join('') } #10文字ホラー大賞`,
+      text: `${ text.join('') }${ hashtags ? ` ${ hashtags }` : '' }`,
       // url: `${ location.protocol }//${ location.hostname }${ location.pathname }`,
       files: file ? [ file ] : undefined
     }).then(() => {
