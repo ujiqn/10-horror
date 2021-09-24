@@ -19,12 +19,12 @@ const handle = app.getRequestHandler();
 
   // Use HTTPS if HTTPS option enabled
   const hasCertificates =
-    fs.existsSync('./certificates/localhost.key') &&
-    fs.existsSync('./certificates/localhost.crt');
+    fs.existsSync('./https/localhost.key') &&
+    fs.existsSync('./https/localhost.crt');
 
   const options = {
-    key: fs.readFileSync('./certificates/localhost.key'),
-    cert: fs.readFileSync('./certificates/localhost.crt'),
+    key: fs.readFileSync('./https/localhost.key'),
+    cert: fs.readFileSync('./https/localhost.crt'),
   };
   const server = https.createServer(options, expressApp);
 
